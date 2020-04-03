@@ -2,23 +2,21 @@ package com.lemeng.personal.model;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
  * 学生成绩表
  */
+@Table(name = "student_grade")
 @Data
 @Entity
-@Table(name = "student_grade")
 public class StudentGrade implements Serializable {
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1491880369856336155L;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", insertable = false, nullable = false)
     private Integer id;
 
@@ -64,5 +62,5 @@ public class StudentGrade implements Serializable {
     @Column(name = "gmt_modified", nullable = false)
     private LocalDateTime gmtModified;
 
-    
+
 }

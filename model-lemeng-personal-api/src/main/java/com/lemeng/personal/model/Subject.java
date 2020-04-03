@@ -9,11 +9,11 @@ import java.time.LocalDateTime;
 /**
  * 课程表
  */
-@Entity
 @Table(name = "subject")
+@Entity
 @Data
 public class Subject implements Serializable {
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = -7117853894768916495L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 @Data
 @Table(name = "user_info")
 public class UserInfo implements Serializable {
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 6204584362519578646L;
 
     /**
      * 学号
@@ -37,8 +37,8 @@ public class UserInfo implements Serializable {
     /**
      * 学院
      */
-    @Column(name = "Institute", nullable = false)
-    private String Institute;
+    @Column(name = "institute", nullable = false)
+    private String institute;
 
     /**
      * 年龄

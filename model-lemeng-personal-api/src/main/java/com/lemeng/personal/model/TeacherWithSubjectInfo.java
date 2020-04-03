@@ -2,10 +2,7 @@ package com.lemeng.personal.model;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
@@ -13,12 +10,13 @@ import java.time.LocalDateTime;
  * 教师授课表
  */
 @Entity
-@Data
 @Table(name = "teacher_with_subject_info")
+@Data
 public class TeacherWithSubjectInfo implements Serializable {
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = -3073120410400170213L;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", insertable = false, nullable = false)
     private Integer id;
 

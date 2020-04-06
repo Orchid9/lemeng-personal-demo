@@ -4,7 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * 教师授课表
@@ -36,13 +36,12 @@ public class TeacherWithSubjectInfo implements Serializable {
      * 创建时间
      */
     @Column(name = "gmt_create", nullable = false)
-    private LocalDateTime gmtCreate;
+    private Date gmtCreate;
 
     /**
      * 更新时间
      */
     @Column(name = "gmt_modified", nullable = false)
-    private LocalDateTime gmtModified;
+    private Date gmtModified;
 
-    
 }

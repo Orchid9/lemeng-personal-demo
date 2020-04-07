@@ -1,8 +1,10 @@
 package com.lemeng.personal.controller;
 
+import com.lemeng.personal.config.SystemException;
 import com.lemeng.personal.dto.ScoreDto;
 import com.lemeng.personal.dto.StudentGradeDto;
 import com.lemeng.personal.model.StudentGrade;
+import com.lemeng.personal.model.SystemRespCode;
 import com.lemeng.personal.service.StudentGradeService;
 import com.nhsoft.provider.common.Response;
 import io.swagger.annotations.Api;
@@ -81,7 +83,9 @@ public class StudentGradeController {
     public Response<StudentGrade> saveStudentGrade(@ApiParam("学生成绩json对象") @RequestBody StudentGradeDto studentGradeDto) {
         StudentGrade studentGrade = new StudentGrade();
         BeanUtils.copyProperties(studentGradeDto, studentGrade);
-        return Response.data(studentGradeService.saveStudentGrade(studentGrade));
+        StudentGrade studentGradeResult = null;
+        studentGradeResult = studentGradeService.saveStudentGrade(studentGrade);
+        return Response.data(studentGradeResult);
     }
 
     /**

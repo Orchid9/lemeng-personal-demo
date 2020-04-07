@@ -1,5 +1,6 @@
 package com.lemeng.personal.config;
 
+import com.lemeng.personal.model.SystemRespCode;
 import com.nhsoft.provider.common.Response;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -36,12 +37,12 @@ public class GlobalLogAspect {
         Object result = null;
         try {
             result = joinPoint.proceed();
-        } catch (Exception ex) {
+        } catch (SystemException ex) {
             logger.error("Method : {} ,  Exception:{} ", classAndMethod, ex);
-            result = Response.error(2, "方法执行失败");
+            result = Response.error(ex.getCode(), ex.getMessage());
         } catch (Throwable throwable) {
             logger.error("Method : {} , unknown Exception: ", classAndMethod, throwable.getMessage());
-            result = Response.error(3, "未知错误");
+            result = Response.error(SystemRespCode.SYSTEM_ERROR.getRespCode(), throwable.getMessage());
         }
         return result;
     }

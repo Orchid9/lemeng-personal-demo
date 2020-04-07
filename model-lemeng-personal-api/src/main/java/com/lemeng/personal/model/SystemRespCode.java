@@ -16,9 +16,13 @@ public enum SystemRespCode {
      */
     METHOD_ERROR(10001, "方法执行失败"),
     /**
-     * 方法执行失败
+     * 系统异常
      */
-    SYSTEM_ERROR(10001, "系统异常");
+    SYSTEM_ERROR(10002, "系统异常"),
+    /**
+     * 保存更新失败
+     */
+    SAVE_ERROR(10003, "保存更新失败");
 
     private final Integer respCode;
     private final String repDesc;

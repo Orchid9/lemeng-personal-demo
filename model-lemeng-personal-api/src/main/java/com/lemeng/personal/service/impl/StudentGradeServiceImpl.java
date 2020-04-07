@@ -1,9 +1,13 @@
 package com.lemeng.personal.service.impl;
 
+import com.google.gson.Gson;
+import com.lemeng.personal.config.SystemException;
 import com.lemeng.personal.dto.ScoreDto;
 import com.lemeng.personal.model.StudentGrade;
+import com.lemeng.personal.model.SystemRespCode;
 import com.lemeng.personal.repository.StudentGradeRepository;
 import com.lemeng.personal.service.StudentGradeService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -16,6 +20,7 @@ import java.util.List;
  * @Author 张九星
  * @create 2020/4/7 10:54
  */
+@Slf4j
 @Service
 public class StudentGradeServiceImpl implements StudentGradeService {
 
@@ -39,10 +44,19 @@ public class StudentGradeServiceImpl implements StudentGradeService {
         return studentGradeRepository.findStudentGradesByStudentIdAndAcademicYear(studentId, academicYear, pageRequest);
     }
 
-    @Transactional
+    @Transactional(rollbackOn = Exception.class)
     @Override
     public StudentGrade saveStudentGrade(StudentGrade studentGrade) {
-        return studentGradeRepository.save(studentGrade);
+        StudentGrade studentGradeSave = null;
+        try {
+            log.info("save studentGrade is start, the param is:{}", new Gson().toJson(studentGrade));
+            studentGradeSave = studentGradeRepository.save(studentGrade);
+            log.info("save studentGrade is success, the param is:{}", new Gson().toJson(studentGrade));
+        } catch (Exception e) {
+            log.error("save studentGrade is error, the exception:{}", e);
+            throw new SystemException(SystemRespCode.SAVE_ERROR);
+        }
+        return studentGradeSave;
     }
 
     @Override

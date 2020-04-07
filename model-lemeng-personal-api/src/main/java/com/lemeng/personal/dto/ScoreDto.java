@@ -6,6 +6,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * @Author 张九星
+ * @create 2020/4/7 10:54
+ */
 @ApiModel("分数实体")
 @Data
 @AllArgsConstructor

@@ -6,8 +6,12 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
+
 /**
  * 课程表
+ *
+ * @Author 张九星
+ * @create 2020/4/7 10:54
  */
 @Table(name = "subject")
 @Entity

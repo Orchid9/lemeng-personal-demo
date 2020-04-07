@@ -8,6 +8,9 @@ import java.util.Date;
 
 /**
  * 学生成绩表
+ *
+ * @Author 张九星
+ * @create 2020/4/7 10:54
  */
 @Table(name = "student_grade")
 @Data

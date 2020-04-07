@@ -8,6 +8,10 @@ import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
+/**
+ * @Author 张九星
+ * @create 2020/4/7 10:54
+ */
 @ApiModel("学生成绩")
 @Data
 @AllArgsConstructor

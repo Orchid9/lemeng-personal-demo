@@ -8,6 +8,9 @@ import java.util.Date;
 
 /**
  * 教师授课表
+ *
+ * @Author 张九星
+ * @create 2020/4/7 10:54
  */
 @Entity
 @Table(name = "teacher_with_subject_info")

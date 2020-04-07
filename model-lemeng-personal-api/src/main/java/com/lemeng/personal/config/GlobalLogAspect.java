@@ -13,6 +13,10 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Arrays;
 
+/**
+ * @Author 张九星
+ * @create 2020/4/7 10:54
+ */
 @Component
 @Aspect
 public class GlobalLogAspect {

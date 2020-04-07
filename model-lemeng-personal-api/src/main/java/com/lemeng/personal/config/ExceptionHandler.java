@@ -11,12 +11,15 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 
+/**
+ * @Author 张九星
+ * @create 2020/4/7 10:54
+ */
 @Slf4j
 @ControllerAdvice
 public class ExceptionHandler {
-    private ObjectMapper objectMapper = new ObjectMapper();
 
-    {
+    private ObjectMapper objectMapper = new ObjectMapper();{
         objectMapper.setPropertyNamingStrategy(PropertyNamingStrategy.SNAKE_CASE);
     }
 

@@ -11,6 +11,9 @@ import java.util.Date;
 
 /**
  * 用户表
+ *
+ * @Author 张九星
+ * @create 2020/4/7 10:54
  */
 @Entity
 @Data

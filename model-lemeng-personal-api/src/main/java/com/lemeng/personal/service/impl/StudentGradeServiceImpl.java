@@ -12,21 +12,28 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.List;
 
+/**
+ * @Author 张九星
+ * @create 2020/4/7 10:54
+ */
 @Service
 public class StudentGradeServiceImpl implements StudentGradeService {
 
     @Autowired
     private StudentGradeRepository studentGradeRepository;
 
+    @Override
     public ScoreDto findScores(String academicYear, Integer subjectId) {
         return studentGradeRepository.findScores(academicYear, subjectId);
     }
 
+    @Override
     public ScoreDto findTeacherScores(String teacherId, String academicYear, Integer subjectId) {
         ScoreDto teacherScores = studentGradeRepository.findTeacherScores(teacherId, academicYear, subjectId);
         return teacherScores;
     }
 
+    @Override
     public List<StudentGrade> findStudentScores(String studentId, String academicYear, int pageNumber, int pageSize) {
         Pageable pageRequest = PageRequest.of(pageNumber, pageSize);
         return studentGradeRepository.findStudentGradesByStudentIdAndAcademicYear(studentId, academicYear, pageRequest);

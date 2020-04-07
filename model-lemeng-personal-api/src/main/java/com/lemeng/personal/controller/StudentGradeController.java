@@ -14,9 +14,14 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * @Author 张九星
+ * @create 2020/4/7 10:54
+ */
 @Api("学校成绩查询")
 @RestController
 public class StudentGradeController {
+
     @Autowired
     private StudentGradeService studentGradeService;
 

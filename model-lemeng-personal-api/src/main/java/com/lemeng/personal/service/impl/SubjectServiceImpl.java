@@ -3,6 +3,7 @@ package com.lemeng.personal.service.impl;
 import com.lemeng.personal.model.Subject;
 import com.lemeng.personal.repository.SubjectRepository;
 import com.lemeng.personal.service.SubjectService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

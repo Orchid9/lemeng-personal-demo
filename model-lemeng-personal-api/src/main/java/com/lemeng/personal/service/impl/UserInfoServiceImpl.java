@@ -4,11 +4,16 @@ import com.lemeng.personal.model.UserInfo;
 import com.lemeng.personal.repository.UserInfoRepository;
 import com.lemeng.personal.service.UserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import javax.transaction.Transactional;
 
 /**
  * @Author 张九星
  * @create 2020/4/7 17:37
  */
+@Service
+@Transactional(rollbackOn = Exception.class)
 public class UserInfoServiceImpl implements UserInfoService {
 
     @Autowired

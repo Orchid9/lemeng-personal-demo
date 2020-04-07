@@ -2,6 +2,7 @@ package com.lemeng.personal.service;
 
 import com.lemeng.personal.model.TeacherWithSubjectInfo;
 import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -9,7 +10,6 @@ import java.util.List;
  * @Author 张九星
  * @create 2020/4/7 16:57
  */
-@Repository
 public interface TeacherWithSubjectInfoService {
 
     /**

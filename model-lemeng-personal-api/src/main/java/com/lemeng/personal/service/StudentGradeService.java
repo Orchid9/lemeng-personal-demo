@@ -37,5 +37,19 @@ public interface StudentGradeService {
      */
     List<StudentGrade> findStudentScores(String teacherId, String academicYear, int pageNumber, int pageSize);
 
-    void saveStudentGrade(StudentGrade studentGrade);
+    /**
+     * 保存学生成绩
+     *
+     * @param studentGrade 学生成绩json对象
+     * @return 保存的学生信息
+     */
+    StudentGrade saveStudentGrade(StudentGrade studentGrade);
+
+    /**
+     * 删除学生成绩
+     *
+     * @param id 学生成绩id主键
+     * @return 处理结果
+     */
+    void delStudentGradeById(Integer id);
 }

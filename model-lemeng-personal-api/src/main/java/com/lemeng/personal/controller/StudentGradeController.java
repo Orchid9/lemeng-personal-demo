@@ -1,17 +1,16 @@
 package com.lemeng.personal.controller;
 
 import com.lemeng.personal.dto.ScoreDto;
+import com.lemeng.personal.dto.StudentGradeDto;
 import com.lemeng.personal.model.StudentGrade;
 import com.lemeng.personal.service.StudentGradeService;
 import com.nhsoft.provider.common.Response;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -46,7 +45,7 @@ public class StudentGradeController {
     @ApiOperation("查询教师本人每学年，学科平均成绩，最高分，最低分")
     @GetMapping("nhsoft.demo.findTeacherScores")
     public Response<ScoreDto> findTeacherScores(@ApiParam("教师id") String teacherId, @ApiParam("学年") String academicYear, @ApiParam("学科id") Integer subjectId) {
-        ScoreDto teacherScores  = studentGradeService.findTeacherScores(teacherId, academicYear, subjectId);
+        ScoreDto teacherScores = studentGradeService.findTeacherScores(teacherId, academicYear, subjectId);
         return Response.data(teacherScores);
     }
 
@@ -66,9 +65,30 @@ public class StudentGradeController {
         return Response.data(studentScores);
     }
 
+    /**
+     * 保存修改学生成绩
+     *
+     * @param studentGradeDto 学生成绩json对象
+     * @return 保存的学生信息
+     */
+    @ApiOperation("保存修改学生成绩")
     @PostMapping("nhsoft.demo.saveStudentGrade")
-    public Response saveStudentGrade(@RequestBody StudentGrade studentGrade){
-        studentGradeService.saveStudentGrade(studentGrade);
+    public Response<StudentGrade> saveStudentGrade(@ApiParam("学生成绩json对象") @RequestBody StudentGradeDto studentGradeDto) {
+        StudentGrade studentGrade = new StudentGrade();
+        BeanUtils.copyProperties(studentGradeDto, studentGrade);
+        return Response.data(studentGradeService.saveStudentGrade(studentGrade));
+    }
+
+    /**
+     * 删除学生成绩
+     *
+     * @param id 学生成绩id主键
+     * @return 处理结果
+     */
+    @ApiOperation("删除学生成绩")
+    @DeleteMapping("nhsoft.demo.delStudentGrade")
+    public Response delStudentGrade(@ApiParam("学生成绩id主键") Integer id) {
+        studentGradeService.delStudentGradeById(id);
         return Response.empty();
     }
 }

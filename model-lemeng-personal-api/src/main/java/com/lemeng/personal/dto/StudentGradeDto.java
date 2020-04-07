@@ -1,43 +1,40 @@
 package com.lemeng.personal.dto;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.util.Date;
 
+@ApiModel("学生成绩")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class StudentGradeDto {
 
+    @ApiModelProperty("主键id")
     private Integer id;
 
-    /**
-     * 学生id
-     */
+    @ApiModelProperty("学生id")
     private String studentId;
 
-    /**
-     * 老师id
-     */
+    @ApiModelProperty("老师id")
     private String teacherId;
 
-    /**
-     * 课程id
-     */
+    @ApiModelProperty("课程id")
     private Integer subjectId;
 
-    /**
-     * 学年
-     */
+    @ApiModelProperty("学年")
     private String academicYear;
 
-    /**
-     * 分数
-     */
-        private Integer score;
+    @ApiModelProperty("分数")
+    private Integer score;
 
-    /**
-     * 创建时间
-     */
+    @ApiModelProperty("创建时间")
     private Date gmtCreate;
 
-    /**
-     * 更新时间
-     */
+    @ApiModelProperty("更新时间")
     private Date gmtModified;
 }

@@ -34,7 +34,12 @@ public class StudentGradeServiceImpl implements StudentGradeService {
 
     @Transactional
     @Override
-    public void saveStudentGrade(StudentGrade studentGrade) {
-        studentGradeRepository.save(studentGrade);
+    public StudentGrade saveStudentGrade(StudentGrade studentGrade) {
+        return studentGradeRepository.save(studentGrade);
+    }
+
+    @Override
+    public void delStudentGradeById(Integer id) {
+        studentGradeRepository.deleteById(id);
     }
 }

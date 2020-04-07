@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ScoreDto {
+public class ScoreDTO {
 
     @ApiModelProperty("最高分")
     private Integer maxScore;

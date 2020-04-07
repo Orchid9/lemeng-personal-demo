@@ -1,9 +1,10 @@
-package com.lemeng.personal.config;
+package com.lemeng.personal.exception;
 
-import com.lemeng.personal.model.SystemRespCode;
 import com.nhsoft.provider.common.AbstractException;
 
 /**
+ * 系统异常
+ *
  * @Author 张九星
  * @create 2020/4/7 10:54
  */

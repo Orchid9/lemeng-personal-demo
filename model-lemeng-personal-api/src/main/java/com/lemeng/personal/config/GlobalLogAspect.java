@@ -1,6 +1,7 @@
 package com.lemeng.personal.config;
 
-import com.lemeng.personal.model.SystemRespCode;
+import com.lemeng.personal.exception.SystemException;
+import com.lemeng.personal.exception.SystemRespCode;
 import com.nhsoft.provider.common.Response;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -15,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.Arrays;
 
 /**
+ * controller层日志切面
  * @Author 张九星
  * @create 2020/4/7 10:54
  */

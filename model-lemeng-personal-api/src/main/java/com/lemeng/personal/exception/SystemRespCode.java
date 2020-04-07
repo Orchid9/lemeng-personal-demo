@@ -1,4 +1,4 @@
-package com.lemeng.personal.model;
+package com.lemeng.personal.exception;
 
 /**
  * 系统返回码

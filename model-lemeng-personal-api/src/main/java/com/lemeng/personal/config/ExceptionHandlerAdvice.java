@@ -3,6 +3,7 @@ package com.lemeng.personal.config;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
+import com.lemeng.personal.exception.SystemException;
 import com.nhsoft.provider.common.ErrorCode;
 import com.nhsoft.provider.common.Response;
 import lombok.extern.slf4j.Slf4j;
@@ -12,12 +13,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 
 /**
+ * 异常处理
  * @Author 张九星
  * @create 2020/4/7 10:54
  */
 @Slf4j
 @ControllerAdvice
-public class ExceptionHandler {
+public class ExceptionHandlerAdvice {
 
     private ObjectMapper objectMapper = new ObjectMapper();{
         objectMapper.setPropertyNamingStrategy(PropertyNamingStrategy.SNAKE_CASE);

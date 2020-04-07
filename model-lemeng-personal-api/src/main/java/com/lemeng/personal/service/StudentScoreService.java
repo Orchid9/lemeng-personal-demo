@@ -1,15 +1,17 @@
 package com.lemeng.personal.service;
 
-import com.lemeng.personal.dto.ScoreDto;
-import com.lemeng.personal.model.StudentGrade;
+import com.lemeng.personal.model.ScoreModel;
+import com.lemeng.personal.model.StudentScore;
 
 import java.util.List;
 
 /**
+ * 学校成绩查询Service层
+ *
  * @Author 张九星
  * @create 2020/4/7 10:54
  */
-public interface StudentGradeService {
+public interface StudentScoreService {
 
     /**
      * 教学处主任,教师，可以查询教师本人每学年，学科平均成绩，最高分，最低分
@@ -18,7 +20,7 @@ public interface StudentGradeService {
      * @param subjectId    学科id
      * @return 学科平均成绩，最高分，最低分
      */
-    ScoreDto findScores(String academicYear, Integer subjectId);
+    ScoreModel readScore(String academicYear, Integer subjectId);
 
     /**
      * 查询教师本人每学年，学科平均成绩，最高分，最低分
@@ -28,7 +30,7 @@ public interface StudentGradeService {
      * @param subjectId    学科id
      * @return 学科平均成绩，最高分，最低分
      */
-    ScoreDto findTeacherScores(String teacherId, String academicYear, Integer subjectId);
+    ScoreModel readTeacherScore(String teacherId, String academicYear, Integer subjectId);
 
     /**
      * 学生查询本人每学年各学科成绩
@@ -39,15 +41,15 @@ public interface StudentGradeService {
      * @param pageSize     页面数量
      * @return 学生各学科成绩
      */
-    List<StudentGrade> findStudentScores(String studentId, String academicYear, int pageNumber, int pageSize);
+    List<StudentScore> findStudentScores(String studentId, String academicYear, int pageNumber, int pageSize);
 
     /**
      * 保存学生成绩
      *
-     * @param studentGrade 学生成绩json对象
+     * @param studentScore 学生成绩json对象
      * @return 保存的学生信息
      */
-    StudentGrade saveStudentGrade(StudentGrade studentGrade);
+    StudentScore saveStudentScore(StudentScore studentScore);
 
     /**
      * 删除学生成绩

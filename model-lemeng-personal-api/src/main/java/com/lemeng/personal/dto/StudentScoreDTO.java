@@ -16,7 +16,7 @@ import java.util.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class StudentGradeDto {
+public class StudentScoreDTO {
 
     @ApiModelProperty("主键id")
     private Integer id;

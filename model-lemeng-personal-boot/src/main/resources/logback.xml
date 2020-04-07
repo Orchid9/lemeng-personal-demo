@@ -4,7 +4,7 @@
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>logs/demo.log</file>
         <encoder>
-            <pattern>%date %level [%thread] %logger{10} [%file:%line] %msg%n</pattern>
+            <pattern>%{TIMESTAMP_ISO8601:log.time} %{GREEDYDATA:log.message}</pattern>
         </encoder>
         <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
             <fileNamePattern>logs/demo_%d{yyyy-MM-dd}.%i.log</fileNamePattern>

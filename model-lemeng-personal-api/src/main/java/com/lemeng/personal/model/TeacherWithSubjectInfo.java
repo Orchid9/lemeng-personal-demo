@@ -1,6 +1,9 @@
 package com.lemeng.personal.model;
 
 import lombok.Data;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -15,36 +18,33 @@ import java.util.Date;
 @Entity
 @Table(name = "teacher_with_subject_info")
 @Data
+@EntityListeners(AuditingEntityListener.class)
 public class TeacherWithSubjectInfo implements Serializable {
     private static final long serialVersionUID = -3073120410400170213L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", insertable = false, nullable = false)
     private Integer id;
 
     /**
      * 教师id
      */
-    @Column(name = "teacher_id", nullable = false)
     private String teacherId;
 
     /**
      * 课程id
      */
-    @Column(name = "subject_id", nullable = false)
     private Integer subjectId;
 
     /**
      * 创建时间
      */
-    @Column(name = "gmt_create", nullable = false)
+    @CreatedDate
+    @Column(name = "gmt_create", updatable = false, nullable = false)
     private Date gmtCreate;
-
     /**
      * 更新时间
      */
-    @Column(name = "gmt_modified", nullable = false)
+    @LastModifiedDate
     private Date gmtModified;
-
 }

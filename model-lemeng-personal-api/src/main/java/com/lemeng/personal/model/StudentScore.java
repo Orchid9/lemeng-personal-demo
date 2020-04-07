@@ -1,6 +1,9 @@
 package com.lemeng.personal.model;
 
 import lombok.Data;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -12,57 +15,52 @@ import java.util.Date;
  * @Author 张九星
  * @create 2020/4/7 10:54
  */
-@Table(name = "student_grade")
+@Table(name = "student_score")
 @Data
 @Entity
-public class StudentGrade implements Serializable {
+@EntityListeners(AuditingEntityListener.class)
+public class StudentScore implements Serializable {
     private static final long serialVersionUID = 1491880369856336155L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", insertable = false, nullable = false)
     private Integer id;
 
     /**
      * 学生id
      */
-    @Column(name = "student_id", nullable = false)
     private String studentId;
 
     /**
      * 老师id
      */
-    @Column(name = "teacher_id", nullable = false)
     private String teacherId;
 
     /**
      * 课程id
      */
-    @Column(name = "subject_id", nullable = false)
     private Integer subjectId;
 
     /**
      * 学年
      */
-    @Column(name = "academic_year", nullable = false)
     private String academicYear;
 
     /**
      * 分数
      */
-    @Column(name = "score", nullable = false)
     private Integer score;
 
     /**
      * 创建时间
      */
-    @Column(name = "gmt_create", nullable = false)
+    @CreatedDate
+    @Column(name = "gmt_create", updatable = false, nullable = false)
     private Date gmtCreate;
 
     /**
      * 更新时间
      */
-    @Column(name = "gmt_modified", nullable = false)
+    @LastModifiedDate
     private Date gmtModified;
-
 }

@@ -1,5 +1,12 @@
 .idea/
 logs/
 */target/
-target/
-bin/
+/*.iml
+*/*.iml
+/.idea/
+model-lemeng-personal-api/model-lemeng-personal-api.iml
+model-lemeng-personal-api/src/main/java/com/lemeng/personal/util/
+model-lemeng-personal-boot/model-lemeng-personal-boot.iml
+model-lemeng-personal-boot/src/test/
+model-lemeng-personal-boot.iml
+src/test/

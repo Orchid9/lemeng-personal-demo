@@ -10,7 +10,9 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -55,7 +57,7 @@ public class TeacherWithSubjectInfoController {
      * @return 保存更新的对象信息
      */
     @ApiOperation("保存更新教师学科信息")
-    @GetMapping("nhsoft.demo.teacher.with.subject.save")
+    @PostMapping("nhsoft.demo.teacher.with.subject.save")
     public Response saveTeacherWithSubjectInfo(@ApiParam("教师学科信息") TeacherWithSubjectInfoDTO teacherWithSubjectInfoDTO) {
         TeacherWithSubjectInfo teacherWithSubjectInfo = new TeacherWithSubjectInfo();
         BeanUtils.copyProperties(teacherWithSubjectInfoDTO, teacherWithSubjectInfo);
@@ -69,7 +71,7 @@ public class TeacherWithSubjectInfoController {
      * @return 删除结果
      */
     @ApiOperation("删除教师学科信息")
-    @GetMapping("nhsoft.demo.teacher.with.subject.delete")
+    @DeleteMapping("nhsoft.demo.teacher.with.subject.delete")
     public Response deleteTeacherWithSubjectInfo(@ApiParam("教师学科信息Id") Integer id) {
         teacherWithSubjectInfoService.deleteTeacherWithSubjectInfo(id);
         return Response.empty();

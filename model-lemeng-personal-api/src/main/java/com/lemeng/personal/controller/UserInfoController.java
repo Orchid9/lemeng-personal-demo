@@ -9,7 +9,9 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -45,7 +47,7 @@ public class UserInfoController {
      * @return 保存更新的用户信息
      */
     @ApiOperation("保存更新用户信息")
-    @GetMapping("nhsoft.demo.user.info.save")
+    @PostMapping("nhsoft.demo.user.info.save")
     public Response saveUserInfo(@ApiParam("用户信息") UserInfoDTO userInfoDTO) {
         UserInfo userInfo = new UserInfo();
         BeanUtils.copyProperties(userInfoDTO, userInfo);
@@ -59,7 +61,7 @@ public class UserInfoController {
      * @return 删除结果
      */
     @ApiOperation("删除用户信息")
-    @GetMapping("nhsoft.demo.user.info.delete")
+    @DeleteMapping("nhsoft.demo.user.info.delete")
     public Response deleteUserInfo(@ApiParam("学科id") String studentId) {
         userInfoService.deleteUserInfoById(studentId);
         return Response.empty();

@@ -54,7 +54,6 @@ public class StudentScoreServiceImpl implements StudentScoreService {
             studentScoreSave = studentScoreRepository.save(studentScore);
             log.info("save studentScore is success, the param is:{}", new Gson().toJson(studentScore));
         } catch (Exception e) {
-            log.error("save studentScore is error, the exception:{}", e);
             throw new SystemException(SystemRespCode.SAVE_ERROR);
         }
         return studentScoreSave;

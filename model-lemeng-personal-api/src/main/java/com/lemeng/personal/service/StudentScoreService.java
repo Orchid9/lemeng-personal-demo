@@ -57,5 +57,5 @@ public interface StudentScoreService {
      * @param id 学生成绩id主键
      * @return 处理结果
      */
-    void delStudentGradeById(Integer id);
+    void deleteStudentGrade(Integer id);
 }

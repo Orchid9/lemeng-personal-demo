@@ -97,8 +97,8 @@ public class StudentScoreController {
      */
     @ApiOperation("删除学生成绩")
     @DeleteMapping("nhsoft.demo.student.grade.delete")
-    public Response delStudentGrade(@ApiParam("学生成绩id主键") Integer id) {
-        studentScoreService.delStudentGradeById(id);
+    public Response deleteStudentGrade(@ApiParam("学生成绩id主键") Integer id) {
+        studentScoreService.deleteStudentGrade(id);
         return Response.empty();
     }
 }

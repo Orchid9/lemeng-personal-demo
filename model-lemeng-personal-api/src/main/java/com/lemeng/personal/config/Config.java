@@ -20,6 +20,7 @@ import java.util.List;
  */
 @Configuration
 @Slf4j
+@ImportResource(locations = "config.xml")
 public class Config {
     @Bean
     public DataSource dataSource(DatabaseProperties databaseProperties) {

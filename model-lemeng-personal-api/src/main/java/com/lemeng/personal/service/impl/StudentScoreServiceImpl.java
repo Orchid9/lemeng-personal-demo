@@ -61,7 +61,7 @@ public class StudentScoreServiceImpl implements StudentScoreService {
     }
 
     @Override
-    public void delStudentGradeById(Integer id) {
+    public void deleteStudentGrade(Integer id) {
         studentScoreRepository.deleteById(id);
     }
 }

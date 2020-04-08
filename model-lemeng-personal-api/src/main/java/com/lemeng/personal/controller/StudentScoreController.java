@@ -82,7 +82,7 @@ public class StudentScoreController {
      * @return 保存的学生信息
      */
     @ApiOperation("保存修改学生成绩")
-    @PostMapping("nhsoft.demo.student.grade.save")
+    @PostMapping("nhsoft.demo.student.score.save")
     public Response<StudentScore> saveStudentGrade(@ApiParam("学生成绩json对象") @RequestBody StudentScoreDTO studentScoreDto) {
         StudentScore studentScore = new StudentScore();
         BeanUtils.copyProperties(studentScoreDto, studentScore);
@@ -96,9 +96,9 @@ public class StudentScoreController {
      * @return 处理结果
      */
     @ApiOperation("删除学生成绩")
-    @DeleteMapping("nhsoft.demo.student.grade.delete")
-    public Response deleteStudentGrade(@ApiParam("学生成绩id主键") Integer id) {
-        studentScoreService.deleteStudentGrade(id);
+    @DeleteMapping("nhsoft.demo.student.score.delete")
+    public Response delStudentGrade(@ApiParam("学生成绩id主键") Integer id) {
+        studentScoreService.deleteStudentScore(id);
         return Response.empty();
     }
 }

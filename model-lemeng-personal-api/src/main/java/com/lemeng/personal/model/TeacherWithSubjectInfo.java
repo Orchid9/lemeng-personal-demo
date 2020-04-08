@@ -23,7 +23,7 @@ public class TeacherWithSubjectInfo implements Serializable {
     private static final long serialVersionUID = -3073120410400170213L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     /**

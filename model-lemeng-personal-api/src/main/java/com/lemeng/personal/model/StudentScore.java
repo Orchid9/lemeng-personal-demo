@@ -23,7 +23,7 @@ public class StudentScore implements Serializable {
     private static final long serialVersionUID = 1491880369856336155L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     /**

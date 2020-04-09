@@ -13,6 +13,12 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
 import javax.transaction.Transactional;
 import java.util.List;
 
@@ -30,14 +36,46 @@ public class StudentScoreServiceImpl implements StudentScoreService {
     @Autowired
     private StudentScoreRepository studentScoreRepository;
 
+    @PersistenceContext
+    private EntityManager entityManager;
+
     @Override
     public ScoreModel readScore(String academicYear, Integer subjectId) {
-        return studentScoreRepository.readScore(academicYear, subjectId);
+        // 方法一
+        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+        CriteriaQuery<ScoreModel> criteriaQuery = criteriaBuilder.createQuery(ScoreModel.class);
+        Root<StudentScore> root = criteriaQuery.from(StudentScore.class);
+        criteriaQuery.multiselect(
+                criteriaBuilder.max(root.get("score")),
+                criteriaBuilder.min(root.get("score")),
+                criteriaBuilder.avg(root.get("score")));
+        Predicate predicate = criteriaBuilder.and(
+                criteriaBuilder.equal(root.get("academicYear"), academicYear),
+                criteriaBuilder.equal(root.get("subjectId"), subjectId));
+        criteriaQuery.where(predicate);
+        return entityManager.createQuery(criteriaQuery).getSingleResult();
+        // 方法二
+        //return studentScoreRepository.readScore(academicYear, subjectId);
     }
 
     @Override
     public ScoreModel readTeacherScore(String teacherId, String academicYear, Integer subjectId) {
-        return studentScoreRepository.findTeacherScores(teacherId, academicYear, subjectId);
+        // 方法一
+        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+        CriteriaQuery<ScoreModel> criteriaQuery = criteriaBuilder.createQuery(ScoreModel.class);
+        Root<StudentScore> root = criteriaQuery.from(StudentScore.class);
+        criteriaQuery.multiselect(
+                criteriaBuilder.max(root.get("score")),
+                criteriaBuilder.min(root.get("score")),
+                criteriaBuilder.avg(root.get("score")));
+        Predicate predicate = criteriaBuilder.and(
+                criteriaBuilder.equal(root.get("teacherId"), teacherId),
+                criteriaBuilder.equal(root.get("academicYear"), academicYear),
+                criteriaBuilder.equal(root.get("subjectId"), subjectId));
+        criteriaQuery.where(predicate);
+        return entityManager.createQuery(criteriaQuery).getSingleResult();
+        // 方法二
+        // return studentScoreRepository.findTeacherScores(teacherId, academicYear, subjectId);
     }
 
     @Override

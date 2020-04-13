@@ -42,20 +42,4 @@ public interface StudentScoreService {
      * @return 学生各学科成绩
      */
     List<StudentScore> findStudentScores(String studentId, String academicYear, int pageNumber, int pageSize);
-
-    /**
-     * 保存学生成绩
-     *
-     * @param studentScore 学生成绩json对象
-     * @return 保存的学生信息
-     */
-    StudentScore saveStudentScore(StudentScore studentScore);
-
-    /**
-     * 删除学生成绩
-     *
-     * @param id 学生成绩id主键
-     * @return 处理结果
-     */
-    void deleteStudentScore(Integer id);
 }

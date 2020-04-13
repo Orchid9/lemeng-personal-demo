@@ -30,75 +30,23 @@ import java.util.List;
  */
 @Service
 @Slf4j
-@Transactional(rollbackOn = Exception.class)
 public class StudentScoreServiceImpl implements StudentScoreService {
 
     @Autowired
     private StudentScoreRepository studentScoreRepository;
 
-    @PersistenceContext
-    private EntityManager entityManager;
-
     @Override
     public ScoreModel readScore(String academicYear, Integer subjectId) {
-        // 方法一
-        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
-        CriteriaQuery<ScoreModel> criteriaQuery = criteriaBuilder.createQuery(ScoreModel.class);
-        Root<StudentScore> root = criteriaQuery.from(StudentScore.class);
-        criteriaQuery.multiselect(
-                criteriaBuilder.max(root.get("score")),
-                criteriaBuilder.min(root.get("score")),
-                criteriaBuilder.avg(root.get("score")));
-        Predicate predicate = criteriaBuilder.and(
-                criteriaBuilder.equal(root.get("academicYear"), academicYear),
-                criteriaBuilder.equal(root.get("subjectId"), subjectId));
-        criteriaQuery.where(predicate);
-        return entityManager.createQuery(criteriaQuery).getSingleResult();
-        // 方法二
-        //return studentScoreRepository.readScore(academicYear, subjectId);
+        return studentScoreRepository.readScore(academicYear, subjectId);
     }
 
     @Override
     public ScoreModel readTeacherScore(String teacherId, String academicYear, Integer subjectId) {
-        // 方法一
-        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
-        CriteriaQuery<ScoreModel> criteriaQuery = criteriaBuilder.createQuery(ScoreModel.class);
-        Root<StudentScore> root = criteriaQuery.from(StudentScore.class);
-        criteriaQuery.multiselect(
-                criteriaBuilder.max(root.get("score")),
-                criteriaBuilder.min(root.get("score")),
-                criteriaBuilder.avg(root.get("score")));
-        Predicate predicate = criteriaBuilder.and(
-                criteriaBuilder.equal(root.get("teacherId"), teacherId),
-                criteriaBuilder.equal(root.get("academicYear"), academicYear),
-                criteriaBuilder.equal(root.get("subjectId"), subjectId));
-        criteriaQuery.where(predicate);
-        return entityManager.createQuery(criteriaQuery).getSingleResult();
-        // 方法二
-        // return studentScoreRepository.findTeacherScores(teacherId, academicYear, subjectId);
+        return studentScoreRepository.findTeacherScores(teacherId, academicYear, subjectId);
     }
 
     @Override
     public List<StudentScore> findStudentScores(String studentId, String academicYear, int pageNumber, int pageSize) {
-        Pageable pageRequest = PageRequest.of(pageNumber, pageSize);
-        return studentScoreRepository.findStudentScoresByStudentIdAndAcademicYear(studentId, academicYear, pageRequest);
-    }
-
-    @Override
-    public StudentScore saveStudentScore(StudentScore studentScore) {
-        StudentScore studentScoreSave;
-        try {
-            log.info("save studentScore is start, the param is:{}", new Gson().toJson(studentScore));
-            studentScoreSave = studentScoreRepository.save(studentScore);
-            log.info("save studentScore is success, the param is:{}", new Gson().toJson(studentScore));
-        } catch (Exception e) {
-            throw new SystemException(SystemRespCode.SAVE_ERROR);
-        }
-        return studentScoreSave;
-    }
-
-    @Override
-    public void deleteStudentScore(Integer id) {
-        studentScoreRepository.deleteById(id);
+        return studentScoreRepository.findStudentScoresByStudentIdAndAcademicYear(studentId, academicYear, pageNumber, pageSize);
     }
 }

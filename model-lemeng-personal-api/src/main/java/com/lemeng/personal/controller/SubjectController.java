@@ -28,14 +28,14 @@ public class SubjectController {
     /**
      * 查询学科详细信息
      *
-     * @param subjectId 学科id
+     * @param subject_id 学科id
      * @return 学科详细信息
      */
     @ApiOperation("查询学科详细信息")
     @GetMapping("nhsoft.demo.subject.read")
-    public Response readSubject(@ApiParam("学科id") Integer subjectId) {
+    public Response readSubject(@ApiParam("学科id") Integer subject_id) {
         SubjectDTO subjectDTO = new SubjectDTO();
-        Subject subject = subjectService.readSubject(subjectId);
+        Subject subject = subjectService.readSubject(subject_id);
         BeanUtils.copyProperties(subject, subjectDTO);
         return Response.data(subjectDTO);
     }
@@ -57,13 +57,13 @@ public class SubjectController {
     /**
      * 删除学科详细信息
      *
-     * @param subjectId 学科信息
+     * @param subject_id 学科信息
      * @return 删除结果
      */
     @ApiOperation("删除学科详细信息")
     @DeleteMapping("nhsoft.demo.subject.delete")
-    public Response deleteSubject(@ApiParam("学科id") Integer subjectId) {
-        subjectService.deleteSubjectById(subjectId);
+    public Response deleteSubject(@ApiParam("学科id") Integer subject_id) {
+        subjectService.deleteSubjectById(subject_id);
         return Response.empty();
     }
 }

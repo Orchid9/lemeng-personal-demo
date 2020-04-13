@@ -32,16 +32,16 @@ public class TeacherWithSubjectInfoController {
     /**
      * 查询教师学科信息
      *
-     * @param teacherId  学科id
-     * @param pageNumber 开始页
-     * @param pageSize   页面数量
+     * @param teacher_id  学科id
+     * @param page_number 开始页
+     * @param page_size   页面数量
      * @return 教师学科信息
      */
     @ApiOperation("查询教师学科信息")
     @GetMapping("nhsoft.demo.teacher.with.subject.read")
-    public Response readTeacherWithSubjectInfo(@ApiParam("教师id") String teacherId, @ApiParam("开始页") int pageNumber, @ApiParam("页面数量") int pageSize) {
+    public Response readTeacherWithSubjectInfo(@ApiParam("教师id") String teacher_id, @ApiParam("开始页") int page_number, @ApiParam("页面数量") int page_size) {
         List<TeacherWithSubjectInfoDTO> teacherWithSubjectInfoDTOList = Lists.newLinkedList();
-        List<TeacherWithSubjectInfo> teacherWithSubjectInfos = teacherWithSubjectInfoService.readTeacherWithSubjectInfo(teacherId, pageNumber, pageSize);
+        List<TeacherWithSubjectInfo> teacherWithSubjectInfos = teacherWithSubjectInfoService.readTeacherWithSubjectInfo(teacher_id, page_number, page_size);
         teacherWithSubjectInfos.forEach(teacherWithSubjectInfo -> {
             TeacherWithSubjectInfoDTO teacherWithSubjectInfoDTO = new TeacherWithSubjectInfoDTO();
             BeanUtils.copyProperties(teacherWithSubjectInfo, teacherWithSubjectInfoDTO);

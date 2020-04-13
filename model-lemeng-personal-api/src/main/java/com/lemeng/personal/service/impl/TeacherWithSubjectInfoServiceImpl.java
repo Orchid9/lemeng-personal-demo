@@ -16,7 +16,6 @@ import java.util.List;
  * @create 2020/4/7 16:57
  */
 @Service
-@Transactional(rollbackOn = Exception.class)
 public class TeacherWithSubjectInfoServiceImpl implements TeacherWithSubjectInfoService {
 
     @Autowired

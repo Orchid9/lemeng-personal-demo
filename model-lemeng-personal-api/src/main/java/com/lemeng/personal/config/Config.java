@@ -7,7 +7,6 @@ import com.alibaba.druid.pool.DruidDataSource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.ImportResource;
 
 import javax.sql.DataSource;
 import java.sql.SQLException;
@@ -20,7 +19,6 @@ import java.util.List;
  */
 @Configuration
 @Slf4j
-@ImportResource(locations = "config.xml")
 public class Config {
     @Bean
     public DataSource dataSource(DatabaseProperties databaseProperties) {

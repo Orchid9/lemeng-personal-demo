@@ -13,7 +13,6 @@ import javax.transaction.Transactional;
  * @create 2020/4/7 17:37
  */
 @Service
-@Transactional(rollbackOn = Exception.class)
 public class UserInfoServiceImpl implements UserInfoService {
 
     @Autowired

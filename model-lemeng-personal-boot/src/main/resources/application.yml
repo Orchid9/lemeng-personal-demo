@@ -29,3 +29,10 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQLDialect
+
+    provider:
+      document:
+        name: DEMO
+        path: csp.nhsoft.cn/demo
+        version: 1.0
+        target: C:/Users/86178/demo/demo.json

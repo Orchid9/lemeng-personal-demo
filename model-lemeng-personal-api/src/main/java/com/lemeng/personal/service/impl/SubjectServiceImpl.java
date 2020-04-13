@@ -14,7 +14,6 @@ import javax.transaction.Transactional;
  * @create 2020/4/7 16:35
  */
 @Service
-@Transactional(rollbackOn = Exception.class)
 public class SubjectServiceImpl implements SubjectService {
 
     @Autowired

@@ -28,14 +28,14 @@ public class UserInfoController {
     /**
      * 查询用户信息
      *
-     * @param userId 用户id
+     * @param user_id 用户id
      * @return 用户信息
      */
     @ApiOperation("查询用户信息")
     @GetMapping("nhsoft.demo.user.info.read")
-    public Response readUserInfo(@ApiParam("用户id") String userId) {
+    public Response readUserInfo(@ApiParam("用户id") String user_id) {
         UserInfoDTO userInfoDTO = new UserInfoDTO();
-        UserInfo userInfo = userInfoService.readUserInfo(userId);
+        UserInfo userInfo = userInfoService.readUserInfo(user_id);
         BeanUtils.copyProperties(userInfo, userInfoDTO);
         return Response.data(userInfoDTO);
     }
@@ -57,13 +57,13 @@ public class UserInfoController {
     /**
      * 删除用户信息
      *
-     * @param studentId 用户信息
+     * @param student_id 用户信息
      * @return 删除结果
      */
     @ApiOperation("删除用户信息")
     @DeleteMapping("nhsoft.demo.user.info.delete")
-    public Response deleteUserInfo(@ApiParam("学科id") String studentId) {
-        userInfoService.deleteUserInfoById(studentId);
+    public Response deleteUserInfo(@ApiParam("学科id") String student_id) {
+        userInfoService.deleteUserInfoById(student_id);
         return Response.empty();
     }
 }
